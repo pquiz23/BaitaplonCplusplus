@@ -1,0 +1,65 @@
+void calculateSalaryById() { 
+
+    if(nop!=0){ 
+
+    int id; 
+
+    bool found = false; 
+
+    double hoursWorked; 
+
+    double totalSalary; 
+
+ 
+
+    cout << "Nhap ma nhan vien ban muon tinh luong: "; 
+
+    cin >> id; 
+
+    while(!found){ 
+
+    for (int i = 0; i < nop; i++) { 
+
+        if (staff[i].id == id) { 
+
+            cout << "Nhap so gio lam viec cua nhan vien " << staff[i].name << ": "; 
+
+            cin >> hoursWorked; 
+
+            totalSalary = staff[i].slr * hoursWorked; 
+
+            cout << "Tong tien luong cua nhan vien " << staff[i].name << " (ID " << staff[i].id << ") la: " << totalSalary << endl; 
+
+            found = true; 
+
+            break; 
+
+        } 
+
+    } 
+
+ 
+
+    if (!found) { 
+
+        cout << "Khong tim thay nhan vien voi ma ID " << id << ". Vui long thu lai.\n"<< "Neu muon thoat nhap 0. " << endl; 
+
+    } 
+
+    if(id==0){  
+
+        break; 
+
+    } 
+
+    } 
+
+    } else { 
+
+        cout << "Chua co mon. Vui long them mon" << endl; 
+
+        addDish(); 
+
+    } 
+
+} 
