@@ -1,0 +1,99 @@
+void orderDish() { 
+
+    if(number!=0){ 
+
+    showDish(); 
+
+    int x; 
+
+    double tong = 0; 
+
+    while (true) { 
+
+        cout << "So mon ban muon chon: "; 
+
+        cin >> x; 
+
+        if (x > 0 && x <= number) { 
+
+            break; 
+
+        } else { 
+
+            cout << "So mon vuot qua so mon co trong menu. Vui long nhap lai!" << endl; 
+
+        } 
+
+    } 
+
+    ofstream file("hoadon.txt"); 
+
+    if (!file.is_open()) { 
+
+        cout << "Khong the tao file hoa don!" << endl; 
+
+        return; 
+
+    } 
+
+    for (int i = 0; i < x; i++) { 
+
+        int y, z; 
+
+        while (true) { 
+
+            cout << "Nhap ma mon thu " << (i + 1) << ": "; 
+
+            cin >> y; 
+
+            bool found = false; 
+
+            for (int j = 0; j < number; j++) { 
+
+                if (menu[j].id == y) { 
+
+                    cout << "Nhap so luong mon " << menu[j].name << ": "; 
+
+                    cin >> z; 
+
+                    tong += menu[j].price * z; 
+
+                    file << menu[j].id << " " << menu[j].name << " " << menu[j].price << " Thanh tien: " << menu[j].price * z << endl; 
+
+                    found = true; 
+
+                    break; 
+
+                } 
+
+            } 
+
+            if (found) { 
+
+                break; 
+
+            } else { 
+
+                cout << "Khong tim thay ma mon nay trong menu. Vui long nhap lai!" << endl; 
+
+            } 
+
+        } 
+
+    } 
+
+    file << "Tong thanh toan la: " << tong << endl; 
+
+    file.close(); 
+
+    cout << "Tong thanh toan la: " << tong << endl; 
+
+    } else { 
+
+        cout << "Chua co mon. Vui long them mon" << endl; 
+
+        addDish();  
+
+    } 
+
+} 
